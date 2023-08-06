@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SMART CHOICE</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		body{
+			background-color: #eeeeee;
+		}
+		#logo_con{
+			width: 100%;
+			height: 110px;
+			display: flex;
+			background: linear-gradient(45deg,#00ffff55,#ff00ff55);
+		}
+		#logo{
+			margin-block: auto;
+			margin-left: 2%;
+			width: 110px;
+			height: 92%;
+			border-radius: 50%;
+		}
+		#logo_title{
+			color: #fefefe;
+			font-family: sans-serif;
+			font-size: 40px;
+			margin: auto 5%;
+		}
+		#items_con{
+			margin-top: 50px;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: auto;
+			display: grid;
+			grid-template-columns: repeat(auto-fit,200px);
+			gap: 2%;
+		}
+		#items_card{
+			background-color: black;
+			text-align: center;
+			border-radius: 10px;
+			height: 300px;
+			background: #ffffff;
+			box-shadow: 1.5px 1.5px 5px 0px #11111155;
+		}
+		#item_img{
+			width: 90%;
+			height: 50%;
+			margin-top: 3%;
+			border: 2px solid #cccccc;
+			border-radius: 10px;
+			object-fit: cover;
+		}
+		#item_name{
+			margin-top: 7%;
+			margin-inline: auto;
+			width: 90%;
+			height: 23%;
+			color: #3c3c3c;
+			font-family: Arial;
+		}
+		#item_buy{
+			margin: 5% auto;
+			width: 90%;
+			height: 10%;
+			display: grid;
+			grid-template-columns: repeat(2,1fr);
+		}
+		#item_buy h3{
+			align-self: center;
+			height: 70%;
+			font-family: sans-serif;
+			color: #3c3c3c;
+		}
+		#item_buy button{
+			background: linear-gradient(45deg,#00ffff55,#ff00ff55);
+			border: 1.2px solid #3c3c3c;
+			border-radius: 5px;
+			color: #3c3c3c;
+			transition: 500ms;
+		}
+		#item_buy button:hover{
+			transform: scale(1.07);
+		}
+		#item_buy button:active{
+			animation: animate 1s linear;
+		}
+		@keyframes animate {
+			0%{
+				transform: scale(1.07);
+			}
+			50%{
+				transform: scale(0.5);
+			}
+			100%{
+				transform: scale(1.0);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="logo_con">
+		<img id="logo" src="logo.png" alt="">
+		<h1 id="logo_title">SMART CHOICE</h1>
+	</div>
+	<div id="items_con">
+		<div id="items_card">
+			<img id="item_img" src="cold_brew.jpeg" alt="">
+				<h3 id="item_name">3 In 1 Coffee</h3>
+				<div id="item_buy">
+					<h3>P 1000</h3>
+					<button onclick="create()">BUY</button>
+				</div>
+		</div>
+	</div>
+
+	<script>
+		function create(){
+			fetch('data.txt')
+                .then(response => response.blob())
+                .then(blob => {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const content = event.target.result;
+                        console.log(content);
+                    };
+                    reader.readAsText(blob);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+		}
+	</script>
+</body>
+</html>
