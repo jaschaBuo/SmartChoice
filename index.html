@@ -115,27 +115,20 @@
 				<h3 id="item_name">3 In 1 Coffee</h3>
 				<div id="item_buy">
 					<h3>P 1000</h3>
-					<button onclick="create()">BUY</button>
+					<button>BUY</button>
+				</div>
+		</div>
+		<div id="items_card">
+			<img id="item_img" src="cold_brew.jpeg" alt="">
+				<h3 id="item_name">3 In 1 Coffee</h3>
+				<div id="item_buy">
+					<h3>P 1000</h3>
+					<button>BUY</button>
 				</div>
 		</div>
 	</div>
 
 	<script>
-		function create(){
-			fetch('data.txt')
-                .then(response => response.blob())
-                .then(blob => {
-                    const reader = new FileReader();
-                    reader.onload = function(event) {
-                        const content = event.target.result;
-                        console.log(content);
-                    };
-                    reader.readAsText(blob);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-		}
 	</script>
 </body>
 </html>
